@@ -1,26 +1,21 @@
 <template>
-  <section class="pt-[140px]">
-    <!-- heading/title -->
-    <h2
-      class="text-center text-heading leading-none text-black text-opacity-[87%] max-w-4xl truncate mx-auto mb-[50px]"
-    >
-      Working with GET request
-    </h2>
-
+  <SectionLayout heading="Working with GET request">
     <!-- users grid -->
     <div class="grid grid-cols-3 gap-[29px] mb-[50px]">
       <UserCard v-for="i in 6" :key="i" />
     </div>
 
     <MainButton class="mx-auto min-w-[120px]">Show more</MainButton>
-  </section>
+  </SectionLayout>
 </template>
 <script>
 import UserCard from "@/components/Common/UserCard.vue";
+import SectionLayout from "@/components/layouts/SectionLayout.vue";
 export default {
   name: "UsersSection",
   components: {
     UserCard,
+    SectionLayout,
   },
 };
 </script>

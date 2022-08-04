@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#F4E041",
+        error: "#CB3D40",
       },
       maxWidth: {
         heroMax: "380px",
