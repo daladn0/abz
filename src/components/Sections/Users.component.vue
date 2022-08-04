@@ -1,8 +1,14 @@
 <template>
   <SectionLayout heading="Working with GET request">
     <!-- users grid -->
-    <div class="grid grid-cols-3 gap-[29px] mb-[50px]">
-      <UserCard v-for="i in 6" :key="i" />
+    <div
+      class="grid grid-cols-1 justify-items-center phone-hor:grid-cols-2 gap-5 phone-hor:gap-4 laptop:grid-cols-3 laptop:gap-[29px] mb-[50px]"
+    >
+      <UserCard
+        class="w-[360px] max-w-full phone-hor:w-full"
+        v-for="i in 6"
+        :key="i"
+      />
     </div>
 
     <MainButton class="mx-auto min-w-[120px]">Show more</MainButton>

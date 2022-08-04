@@ -3,6 +3,10 @@ module.exports = {
   content: ["./public/**/*.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        "phone-hor": "501px",
+        laptop: "769px",
+      },
       colors: {
         primary: "#F4E041",
         error: "#CB3D40",

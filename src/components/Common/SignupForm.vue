@@ -1,10 +1,5 @@
 <template>
-  <Form
-    @submit="onSubmit"
-    class="space-y-[50px]"
-    v-slot="{ meta: { valid } }"
-    ref="form"
-  >
+  <Form class="space-y-[50px]" v-slot="{ meta: { valid } }" ref="form">
     <Field
       name="username"
       :rules="validateUsername"
@@ -55,7 +50,7 @@
           :maxlength="10"
         />
         <span
-          class="absolute left-4 top-full block mt-1 text-xs leading-relaxed"
+          class="absolute left-4 top-full block mt-0.5 text-xs leading-relaxed"
           :class="[errorMessage ? 'text-error' : 'text-[#747474]']"
           >{{ pattern }}</span
         >

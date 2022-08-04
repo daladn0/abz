@@ -1,8 +1,10 @@
 <template>
   <section
-    class="relative w-full min-h-[650px] flex flex-col items-center justify-center bg-heroBG bg-center bg-cover after:absolute after:inset-0 after:bg-black after:z-10 after:bg-opacity-50 text-white"
+    class="relative pt-[40px] phone-hor:pt-0 w-full min-h-[500px] laptop:min-h-[650px] flex flex-col items-center phone-hor:justify-center bg-heroBG bg-center bg-cover after:absolute after:inset-0 after:bg-black after:z-10 after:bg-opacity-50 text-white"
   >
-    <div class="text-white z-20 max-w-heroMax text-center">
+    <div
+      class="text-white z-20 max-w-full px-4 phone-hor:px-0 phone-hor:max-w-heroMax text-center"
+    >
       <h1 class="text-[40px] leading-none text-center mb-[21px]">
         Test assignment for front-end developer
       </h1>

@@ -1,8 +1,8 @@
 <template>
   <div class="pb-[100px]">
     <HeaderComponent />
+    <Hero class="w-full max-w-[1170px] mx-auto" />
     <div class="app-container">
-      <Hero />
       <Users />
       <Signup />
     </div>
