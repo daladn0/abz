@@ -12,6 +12,9 @@ module.exports = {
       backgroundImage: {
         heroBG: 'url("@/assets/images/hero.jpeg")',
       },
+      fontSize: {
+        heading: "40px",
+      },
     },
   },
   plugins: [],
