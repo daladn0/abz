@@ -18,11 +18,13 @@
     </p>
 
     <!-- user info -->
-    <p
-      class="bock max-w-full truncate text-center text-black text-opacity-[87%] text-base leading-[26px]"
-    >
-      ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-    </p>
+    <ToolTip label="markkostevych@gmail.com">
+      <p
+        class="bock max-w-full truncate text-center text-black text-opacity-[87%] text-base leading-[26px]"
+      >
+        ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+      </p>
+    </ToolTip>
     <p
       class="bock max-w-full truncate text-center text-black text-opacity-[87%] text-base leading-[26px]"
     >
