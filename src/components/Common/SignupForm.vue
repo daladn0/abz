@@ -81,11 +81,16 @@ export default {
     validateUsername,
     validatePhone,
     checkValidation(valid) {
+      const formBody = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+      };
       if (valid) {
-        return this.$emit("validated", true);
+        return this.$emit("validated", true, formBody);
       }
 
-      this.$emit("validated", false);
+      this.$emit("validated", false, formBody);
     },
   },
   data() {

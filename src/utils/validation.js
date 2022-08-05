@@ -1,3 +1,5 @@
+import { IMAGE } from "@/constants/SIZES";
+
 export const validateUsername = (value) => {
   if (!value) {
     return "Enter your name";
@@ -39,9 +41,21 @@ export const validatePhone = (value) => {
   }
 
   // eslint-disable-next-line no-useless-escape
-  const regex = /^([0-9]{10})$/;
+  const regex = /^(0[0-9]{9})$/;
   if (!regex.test(value)) {
     return "Invalid phone number";
+  }
+
+  return true;
+};
+
+export const validateImage = (file) => {
+  if (file.size > 5000000) {
+    return "File can't be larger than 5MB";
+  }
+
+  if (file.width < IMAGE.MIN_WIDTH || file.height < IMAGE.MIN_HEIGHT) {
+    return "Minimum size of photo is 70x70px";
   }
 
   return true;
