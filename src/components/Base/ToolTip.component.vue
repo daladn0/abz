@@ -1,5 +1,5 @@
 <template>
-  <div class="relative group">
+  <div class="relative group" :class="{ 'select-none': removeSelection }">
     <slot />
     <span
       ref="tooltip"
@@ -15,6 +15,10 @@ export default {
     label: {
       type: String,
       require: true,
+    },
+    removeSelection: {
+      type: Boolean,
+      default: false,
     },
   },
   mounted() {

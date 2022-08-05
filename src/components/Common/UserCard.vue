@@ -18,7 +18,7 @@
     </p>
 
     <!-- user info -->
-    <ToolTip label="markkostevych@gmail.com">
+    <ToolTip label="markkostevych@gmail.com" :removeSelection="true">
       <p
         class="bock max-w-full truncate text-center text-black text-opacity-[87%] text-base leading-[26px]"
       >
