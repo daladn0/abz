@@ -2,6 +2,7 @@ body {
   background: #F8F8F8;
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .app-container {
@@ -16,5 +17,17 @@ body {
 
   @media ( max-width: 500px ) {
     padding: 0 16px;
+  }
+}
+
+// utilities
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+
+  &-7 {
+    -webkit-line-clamp: 7;
   }
 }

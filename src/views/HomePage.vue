@@ -3,8 +3,8 @@
     <HeaderComponent class="sticky top-0 z-30" />
     <Hero class="w-full max-w-[1170px] mx-auto" />
     <div class="app-container">
-      <Users />
-      <Signup />
+      <Users id="users" />
+      <Signup id="signup" />
     </div>
   </div>
 </template>
