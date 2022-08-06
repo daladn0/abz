@@ -102,7 +102,6 @@ export default {
     },
     resetForm() {
       this.$refs.resetBtn.click();
-      console.log("reseting");
     },
   },
   data() {
