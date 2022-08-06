@@ -4,7 +4,7 @@
       <button
         type="button"
         @click="handleScroll"
-        class="flex h-full items-center"
+        class="flex h-full items-center pr-2"
       >
         <img src="@/assets/images/Logo.svg" class="block w-[104px] h-auto" />
       </button>

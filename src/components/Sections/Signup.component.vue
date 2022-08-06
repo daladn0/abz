@@ -103,8 +103,6 @@ export default {
 
       this.isSignupLoading = false;
 
-      console.log(response);
-
       if (response) {
         this.signupSuccess = true;
         setTimeout(() => {
