@@ -7,7 +7,8 @@
         type === 'primary',
     }"
   >
-    <slot />
+    <PreLoader v-if="isLoading" class="w-4 h-4 my-[5px] mx-auto" />
+    <slot v-else />
   </button>
 </template>
 <script>
@@ -17,6 +18,10 @@ export default {
     type: {
       type: String,
       default: "primary",
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   },
 };

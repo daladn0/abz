@@ -1,5 +1,11 @@
 <template>
-  <Form class="space-y-[50px]" v-slot="{ meta: { valid } }" ref="form">
+  <Form class="space-y-[50px]" v-slot="{ meta: { valid } }" @input="btnClick">
+    <button
+      type="button"
+      ref="btn"
+      @click="checkValidation(valid)"
+      class="opacity-0 absolute pointer-events-none -z-1"
+    />
     <Field
       name="username"
       :rules="validateUsername"
@@ -11,7 +17,6 @@
           type="text"
           label="Your name"
           v-model="name"
-          @input="checkValidation(valid)"
           :field="field"
           :errorMessage="errorMessage"
         />
@@ -28,7 +33,6 @@
           type="email"
           label="Email"
           v-model="email"
-          @input="checkValidation(valid)"
           :field="field"
           :errorMessage="errorMessage"
         />
@@ -44,7 +48,6 @@
         <FormInput
           label="Phone"
           v-model="phone"
-          @input="checkValidation(valid)"
           :field="field"
           :errorMessage="errorMessage"
           :maxlength="10"
@@ -81,6 +84,7 @@ export default {
     validateUsername,
     validatePhone,
     checkValidation(valid) {
+      console.log(valid);
       const formBody = {
         name: this.name,
         email: this.email,
@@ -91,6 +95,11 @@ export default {
       }
 
       this.$emit("validated", false, formBody);
+    },
+    btnClick() {
+      setTimeout(() => {
+        this.$refs.btn.click();
+      }, 0);
     },
   },
   data() {

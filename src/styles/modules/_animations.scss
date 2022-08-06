@@ -1,0 +1,54 @@
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease-out;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+.user-card {
+    &:nth-child(6n+1) {
+        transition-delay: 100ms;
+    }
+
+    &:nth-child(6n+2) {
+        transition-delay: 200ms;
+    }
+
+    &:nth-child(6n+3) {
+        transition-delay: 300ms;
+    }
+
+    &:nth-child(6n+4) {
+        transition-delay: 400ms;
+    }
+
+    &:nth-child(6n+5) {
+        transition-delay: 500ms;
+    }
+
+    &:nth-child(6n+6) {
+        transition-delay: 600ms;
+    }
+}

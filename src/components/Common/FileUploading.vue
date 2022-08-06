@@ -17,16 +17,22 @@
     </div>
     <label
       for="upload"
-      class="block text-base rounded-l-[4px] leading-[26px] border border-black border-opacity-[87%] px-[15px] py-[13px] cursor-pointer"
+      class="block text-base rounded-l-[4px] leading-[26px] border px-[15px] py-[13px] cursor-pointer"
+      :class="[
+        fileError
+          ? 'border-error ring-1 ring-error'
+          : 'border-black border-opacity-[87%]',
+      ]"
     >
       <PreLoader class="w-6 h-6 mx-[14px] my-px" v-if="isLoading" />
       <span v-else>Upload</span>
     </label>
     <span
       id="file-chosen"
-      class="flex-1 border border-[#D0CFCF] px-[15px] py-[13px] border-l-0 rounded-r-[4px] truncate"
+      class="flex-1 border px-[15px] py-[13px] border-l-0 rounded-r-[4px] truncate"
       :class="[
         file && file.name ? 'text-black text-opacity-[87%]' : 'text-[#7E7E7E]',
+        fileError ? 'border-error ring-1 ring-error' : 'border-[#D0CFCF]',
       ]"
       >{{ file && file.name ? file.name : "Upload your photo" }}</span
     >
@@ -75,8 +81,6 @@ export default {
             height: img.height,
           });
 
-          console.log(validationResult);
-
           if (validationResult !== true) {
             this.fileError = validationResult;
           }
@@ -91,11 +95,18 @@ export default {
     },
   },
   watch: {
-    fileError() {
+    file() {
       if (!this.fileError && this.file) {
         this.$emit("uploaded", this.file);
-      } else if (this.fileError) {
+      }
+    },
+    fileError() {
+      if (this.fileError) {
         this.$emit("uploaded", null);
+      }
+
+      if (!this.fileError && this.file) {
+        this.$emit("uploaded", this.file);
       }
     },
   },
