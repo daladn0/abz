@@ -1,5 +1,8 @@
 <template>
-  <SectionLayout heading="Working with GET request">
+  <SectionLayout
+    heading="Working with GET request"
+    class="max-w-full overflow-x-hidden"
+  >
     <!-- users grid -->
     <div
       class="grid grid-cols-1 justify-items-center phone-hor:grid-cols-2 gap-5 phone-hor:gap-4 laptop:grid-cols-3 laptop:gap-[29px] mb-[50px]"
@@ -81,9 +84,6 @@ export default {
         this.users = [...this.users, ...response.data.users].sort(
           (user1, user2) => {
             // sorting by creation date
-            console.log(
-              user2.registration_timestamp - user1.registration_timestamp
-            );
 
             return user2.registration_timestamp - user1.registration_timestamp;
           }

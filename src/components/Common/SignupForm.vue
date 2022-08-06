@@ -1,11 +1,11 @@
 <template>
   <Form class="space-y-[50px]" v-slot="{ meta: { valid } }" @input="btnClick">
-    <button
-      type="button"
-      ref="btn"
-      @click="checkValidation(valid)"
-      class="opacity-0 absolute pointer-events-none -z-1"
-    />
+    <!-- invisible buttons -->
+    <div class="opacity-0 absolute pointer-events-none -z-1">
+      <button type="button" ref="btn" @click="checkValidation(valid)" />
+      <button type="reset" ref="resetBtn" />
+    </div>
+
     <Field
       name="username"
       :rules="validateUsername"
@@ -84,7 +84,6 @@ export default {
     validateUsername,
     validatePhone,
     checkValidation(valid) {
-      console.log(valid);
       const formBody = {
         name: this.name,
         email: this.email,
@@ -100,6 +99,10 @@ export default {
       setTimeout(() => {
         this.$refs.btn.click();
       }, 0);
+    },
+    resetForm() {
+      this.$refs.resetBtn.click();
+      console.log("reseting");
     },
   },
   data() {

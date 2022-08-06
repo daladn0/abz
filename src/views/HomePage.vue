@@ -3,8 +3,8 @@
     <HeaderComponent class="sticky top-0 z-30" />
     <Hero class="w-full max-w-[1170px] mx-auto" />
     <div class="app-container">
-      <Users id="users" />
-      <Signup id="signup" />
+      <Users id="users" ref="users" :key="userKey" />
+      <Signup id="signup" @signedUp="usersUpdate" />
     </div>
 
     <!-- go up -->
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { scrollTo } from "@/utils/scrollTo";
 import HeaderComponent from "@/components/Sections/Header.component.vue";
 import Hero from "@/components/Sections/Hero.component.vue";
 import Users from "@/components/Sections/Users.component.vue";
@@ -49,6 +50,8 @@ export default {
   data() {
     return {
       goTopVisible: false,
+
+      userKey: 1,
     };
   },
   methods: {
@@ -64,6 +67,10 @@ export default {
       } else {
         this.goTopVisible = false;
       }
+    },
+    usersUpdate() {
+      scrollTo("#users");
+      this.userKey = Math.random();
     },
   },
   mounted() {

@@ -1,9 +1,15 @@
 <template>
-  <SectionLayout heading="Working with POST request">
-    <div class="max-w-heroMax mx-auto">
-      <SignupForm class="w-full" @validated="onValidated" />
+  <SectionLayout :heading="heading">
+    <div class="w-full max-w-heroMax mx-auto" v-if="signupSuccess">
+      <img src="@/assets/images/success.svg" class="w-full" />
+    </div>
+    <div class="max-w-heroMax mx-auto" v-else>
+      <SignupForm ref="form" class="w-full" @validated="onValidated" />
 
-      <PreLoader class="w-12 h-12 mx-auto" v-if="isPositionsLoading" />
+      <PreLoader
+        class="w-10 h-10 mx-auto mb-10 mt-12"
+        v-if="isPositionsLoading"
+      />
 
       <div v-else-if="isPositionsError" class="mt-10 mb-8 text-error">
         Something went wrong. Couldn't load positions.
@@ -21,15 +27,25 @@
         @uploaded="file = $event"
       />
 
+      <span
+        v-if="signupError"
+        class="font-bold text-error text-xs text-center mx-auto block mb-2"
+        >{{ signupError }}</span
+      >
       <ToolTip class="mx-auto w-fit" :label="formLabel">
-        <MainButton :disabled="!isButtonEnabled">Sign up</MainButton>
+        <MainButton
+          :isLoading="isSignupLoading"
+          :disabled="!isButtonEnabled"
+          @click="onSignUp"
+          >Sign up</MainButton
+        >
       </ToolTip>
     </div>
   </SectionLayout>
 </template>
 
 <script>
-import { get } from "@/api/apiMethods";
+import { get, post } from "@/api/apiMethods";
 import { withAsync } from "@/utils/withAsync";
 import SignupForm from "@/components/Common/SignupForm.vue";
 import SectionLayout from "@/layouts/SectionLayout.vue";
@@ -48,6 +64,12 @@ export default {
 
       isPositionsLoading: false,
       isPositionsError: null,
+
+      isSignupLoading: false,
+      signupError: null,
+      signupErrorList: [],
+
+      signupSuccess: false,
     };
   },
   components: {
@@ -66,6 +88,35 @@ export default {
 
       this.isFormValid = false;
     },
+    async onSignUp() {
+      this.isSignupLoading = true;
+
+      const formData = new FormData();
+
+      formData.append("name", this.formBody?.name);
+      formData.append("email", this.formBody?.email);
+      formData.append("phone", `+38${this.formBody?.phone}`);
+      formData.append("position_id", this.pickedPosition);
+      formData.append("photo", this.file);
+
+      const { response, error } = await withAsync(post, "/users", formData);
+
+      this.isSignupLoading = false;
+
+      console.log(response);
+
+      if (response) {
+        this.signupSuccess = true;
+        setTimeout(() => {
+          this.$emit("signedUp");
+        }, 1000);
+      }
+
+      if (error) {
+        console.log(error);
+        this.signupError = error.response.data.message;
+      }
+    },
   },
   computed: {
     isButtonEnabled() {
@@ -78,6 +129,11 @@ export default {
       if (!this.pickedPosition) return "Position is not selected";
       if (!this.file) return "Avatar is not uploaded";
       return "";
+    },
+    heading() {
+      return this.signupSuccess
+        ? "User successfully registered"
+        : "Working with POST request";
     },
   },
   async mounted() {
